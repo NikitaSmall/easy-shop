@@ -1,0 +1,20 @@
+{
+    "name": "bgclassteacher/shop",
+    "description": "shop",
+    "type": "app",
+    "autoload": {
+        "psr-0": {
+            "MyApp": "src"
+        }
+    },
+    "require": {
+        "klein/klein": "^2.1",
+        "robmorgan/phinx": "^0.6.4"
+    },
+    "authors": [
+        {
+            "name": "nikitasmall",
+            "email": "nikitasosnov92@gmail.com"
+        }
+    ]
+}
