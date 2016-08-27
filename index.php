@@ -1,11 +1,8 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once '/config/init.php';
 
-$klein = new \Klein\Klein();
+use src\Routes;
 
-$klein->respond('GET', '/hello-world', function () {
-    return 'Hello World!';
-});
-
-$klein->dispatch();
+$router = new Routes();
+$router->serve();
