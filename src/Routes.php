@@ -23,9 +23,15 @@ class Routes
 
 	private function initRoutes()
 	{
+		$this->routes->respond('/public/[*]', function($request, $response) {
+		    return $response->file('./' . $request->pathname());
+		});
+
 		$this->routes->respond('GET', '/', function () {
 			$indexController = new IndexController();
 		    return $indexController->index();
 		});
+
+		
 	}
 }

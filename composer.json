@@ -11,7 +11,8 @@
         "klein/klein": "^2.1",
         "robmorgan/phinx": "^0.6.4",
         "vlucas/phpdotenv": "^2.3",
-        "spatie/laravel-blade": "^1.0"
+        "spatie/laravel-blade": "^1.0",
+        "symfony/yaml": "^3.1"
     },
     "authors": [
         {
