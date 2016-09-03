@@ -6,6 +6,7 @@ use Klein\Klein;
 
 use src\Controllers\IndexController;
 use src\Controllers\UsersController;
+use src\Controllers\AdminController;
 
 class Routes
 {
@@ -31,6 +32,18 @@ class Routes
 		$this->routes->respond('GET', '/', function () {
 			$indexController = new IndexController();
 		    return $indexController->index();
+		});
+
+		$this->routes->with('/admin', function () {
+			$adminController = new AdminController();
+
+			if (!$adminController->isAdmin($_SESSION['user']['name'])) {
+				$adminController->redirect('/');
+			}
+
+			$this->routes->respond('GET', '/dashboard', function () use ($adminController) {
+				return $adminController->dashboard();
+			});
 		});
 
 		$this->routes->with('/users', function () {

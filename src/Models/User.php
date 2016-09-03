@@ -13,6 +13,15 @@ class User extends Base
 		return $stmt->fetch();
 	}
 
+	public static function isAdmin($username)
+	{
+		$conn = parent::instance();
+		$stmt = $conn->prepare('SELECT * FROM users WHERE username = ? AND is_admin = 1');
+		$stmt->execute([$username]);
+
+		return $stmt->fetch();
+	}
+
 	public static function getByName($username)
 	{
 		$conn = parent::instance();
