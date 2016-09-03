@@ -5,6 +5,7 @@ namespace src;
 use Klein\Klein;
 
 use src\Controllers\IndexController;
+use src\Controllers\UsersController;
 
 class Routes
 {
@@ -32,6 +33,16 @@ class Routes
 		    return $indexController->index();
 		});
 
-		
+		$this->routes->with('/users', function () {
+			$usersController = new UsersController();
+
+			$this->routes->respond('GET', '/create', function () use ($usersController) {
+				return $usersController->registerForm();
+			});
+
+			$this->routes->respond('POST', '/create', function ($request) use ($usersController) {
+				return $usersController->createUser($request);
+			});
+		});
 	}
 }

@@ -8,6 +8,11 @@ class Base
 {
 	protected static $connection;
 
+	private function __construct()
+	{
+		
+	}
+
 	public static function instance()
 	{
 		if (is_null(self::$connection)) {
