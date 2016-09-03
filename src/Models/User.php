@@ -4,6 +4,15 @@ namespace src\Models;
 
 class User extends Base
 {
+	public static function find($username, $password)
+	{
+		$conn = parent::instance();
+		$stmt = $conn->prepare('SELECT * FROM users WHERE username = ? AND password = ?');
+		$stmt->execute([$username, md5($password)]);
+
+		return $stmt->fetch();
+	}
+
 	public static function getByName($username)
 	{
 		$conn = parent::instance();

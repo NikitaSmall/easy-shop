@@ -43,6 +43,14 @@ class Routes
 			$this->routes->respond('POST', '/create', function ($request) use ($usersController) {
 				return $usersController->createUser($request);
 			});
+
+			$this->routes->respond('GET', '/login', function () use ($usersController) {
+				return $usersController->loginForm();
+			});
+
+			$this->routes->respond('POST', '/login', function ($request) use ($usersController) {
+				return $usersController->loginUser($request);
+			});
 		});
 	}
 }
